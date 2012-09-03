@@ -2,7 +2,6 @@
 <html>
 <head>
 <title>OTA</title>
-<script type="text/javascript" charset="utf-8" src="cordova-1.8.0.js"></script>
 <script type="text/javascript" charset="utf-8">
 var fileTransfer = new FileTransfer();
 
@@ -96,7 +95,7 @@ function GetParam(name)
 		// first get the theme files
 		elementArray = xmlDoc.getElementsByTagName('wallpaper');
 		
-		document.write('<font size=2><u>Instructions:</u><br>1. Click Download for Full Size Image(Will open Browser)<br>2. Long press image and Save Image</font><hr>');
+		document.write('<font size=2><u>Instructions:</u><br>1. Click Download To Download Wallpaper(Will open Browser)<br>2. Enjoy!</font><hr>');
 		
 		for (i = 0; i < elementArray.length ; i++)
 		{
@@ -111,9 +110,7 @@ function GetParam(name)
 			   	document.write('Rom and Version : ' + elementArray[i].childNodes[VERSION].childNodes[0].nodeValue + '<br>');
 			document.write("</td><td width=\"30%\" align=\"center\">");
 			if (elementArray[i].childNodes[IMAGE].hasChildNodes()){
-				document.write('<a href=\"'+elementArray[i].childNodes[IMAGE].childNodes[0].nodeValue+'\">');
 				document.write('<img src=\"' + elementArray[i].childNodes[IMAGE].childNodes[0].nodeValue + '\" height=100 >');
-				document.write("</a>");
 			}
 			document.write("</td></tr></table>");
 			document.write("<hr><br>"); 

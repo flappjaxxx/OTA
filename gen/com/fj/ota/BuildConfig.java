@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package com.flappjaxxx.ota;
+package com.fj.ota;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;

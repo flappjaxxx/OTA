@@ -2,7 +2,14 @@
 <html>
 <head>
 <title>OTA</title>
-<script type="text/javascript" charset="utf-8" src="cordova-1.8.0.js"></script>
+<script>
+window.onload = function() {
+    if(!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    }
+}
+</script>
 <script type="text/javascript" charset="utf-8">
 var fileTransfer = new FileTransfer();
 
@@ -34,8 +41,8 @@ body {color:white; text-decoration: none; }
 <script>
 
 var version=0;
-var currentVersion = 5.4;
-var sURL  = "http://rootdev.org/i717/TU2/updates/version4.txt"; 
+var currentVersion = 7.9;
+var sURL  = "http://rootdev.org/i717/TU2/updates/toolsversioncm10.txt"; 
 var oRequest = new XMLHttpRequest();
 
 oRequest.open("GET",sURL,false);
