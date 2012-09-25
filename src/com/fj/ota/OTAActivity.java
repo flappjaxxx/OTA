@@ -16,11 +16,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.DownloadListener;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 public class OTAActivity extends Activity {
 	private WebView mWebView;
+	final Activity activity = this;
 	/** Called when the activity is first created. */
 
 	public void onBackPressed (){
@@ -37,19 +39,22 @@ public class OTAActivity extends Activity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.webview);
 
-	    final ProgressDialog progressDialog = new ProgressDialog(OTAActivity.this);
-	    progressDialog.setMessage("Loading ...");
+	    final ProgressDialog progressDialog = new ProgressDialog(activity);
+	    progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 	    progressDialog.setCancelable(false);
-	    progressDialog.show();
 	    
+	    String RomInc= android.os.Build.VERSION.INCREMENTAL;
+	    String BuildDate= RomInc.substring(13, 21);
 	    mWebView = (WebView) findViewById(R.id.webview);
 	    mWebView.getSettings().setJavaScriptEnabled(true);
-	    mWebView.loadUrl("file:///android_asset/www/index.htm");
+        mWebView.getSettings().setSupportZoom(true);
+        mWebView.getSettings().setBuiltInZoomControls(true);
+        String url = "http://www.jdvhosting.com/OTA2/ota.php?ROMID=47&ID=44950871&BuildDate=” + BuildDate";
+	    mWebView.loadUrl("http://www.jdvhosting.com/OTA2/ota.php?ROMID=47&ID=44950871");
 	    mWebView.setWebViewClient(new HelloWebViewClient() {
 	    	@Override
 		    public void onPageFinished(WebView view, String url) {
 		    super.onPageFinished(view, url);
-		    progressDialog.hide();
 		    }
 		    });
 	    mWebView.setDownloadListener(new DownloadListener() {
@@ -62,7 +67,18 @@ public class OTAActivity extends Activity {
 
 	        }
 	    });
-	    
+	    mWebView.setWebChromeClient(new WebChromeClient() {
+	        public void onProgressChanged(WebView view, int progress) {
+	            progressDialog.show();
+	            progressDialog.setProgress(0);
+	            activity.setProgress(progress * 1000);
+
+	            progressDialog.incrementProgressBy(progress);
+
+	            if(progress == 100 && progressDialog.isShowing())
+	                progressDialog.dismiss();
+	        }
+	    });
 	}
 	
 	private class HelloWebViewClient extends WebViewClient {
