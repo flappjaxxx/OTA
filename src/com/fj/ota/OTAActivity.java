@@ -49,7 +49,7 @@ public class OTAActivity extends Activity {
 	    mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setSupportZoom(true);
         mWebView.getSettings().setBuiltInZoomControls(true);
-        String url = "http://www.jdvhosting.com/OTA2/ota.php?ROMID=47&ID=44950871&BuildDate= + BuildDate";
+        String url = "http://www.jdvhosting.com/OTA2/ota.php?ROMID=47&ID=44950871&BuildDate=" + BuildDate;
         mWebView.loadUrl(url);
 	    mWebView.setWebViewClient(new HelloWebViewClient() {
 	    	@Override
