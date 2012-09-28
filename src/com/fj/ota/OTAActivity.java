@@ -19,6 +19,7 @@ import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import com.fj.ota.R;
 
 public class OTAActivity extends Activity {
 	private WebView mWebView;
