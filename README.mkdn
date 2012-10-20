@@ -23,3 +23,7 @@ Now this will compile inline
 To compile it seperately either compile it straight with eclipse or after lunching your ROM:
 
     make -j4 FJ-OTA
+
+Note:
+
+    Also do not forget to change your incremental syntax in OTAActivity.java
