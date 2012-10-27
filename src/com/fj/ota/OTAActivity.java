@@ -26,8 +26,13 @@ public class OTAActivity extends Activity {
 	    progressDialog.setCancelable(false);
 
 	    // This incremental info needs to be changed to coincide with ROM developer incremental info
+	    // This will be this line in your build.prop ro.build.version.incremental
 	    String RomInc= android.os.Build.VERSION.INCREMENTAL;
+
+	    // Your incremental date will start with the numerical date in ro.build.version.incremental
+	    // 13 and 21 will be the character range and will need to be changed to match your incremental length of characters
 	    String BuildDate= RomInc.substring(13, 21);	    
+
 	    mWebView = (WebView) findViewById(R.id.webview);
 	    mWebView.getSettings().setJavaScriptEnabled(true);
 
