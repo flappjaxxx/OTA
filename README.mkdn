@@ -8,21 +8,13 @@ Sign up an OTA2 account at http://jdvhosting.com/OTA2
 
 Open .repo/local_manifest.xml with your favorite text editor
 
-In local_manifest.xml add this line:
+In local_manifest.xml add these lines:
 
-    <project name="flappjaxxx/OTA" path="packages/apps/FJ-OTA" remote="github" revision="master" />
+    <remote  name="fj"
+           fetch="https://github.com/flappjaxxx" />
+    
+    <project name="OTA" path="packages/apps/OTA" remote="fj" revision="master" />
 
-Optional but may be required:
-
-    In .repo/repo/default.xml You may need to add these lines if they aren't already there.
-
-    <remote  name="github"
-           fetch=".." />
-
-    <default revision="refs/heads/jellybean"
-           remote="github"
-           sync-c="true"
-           sync-j="4" />
 
 Add this line to your vendor/your rom-cm or whatever it is/config/common.mk:
 
