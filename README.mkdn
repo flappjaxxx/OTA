@@ -12,6 +12,16 @@ In local_manifest.xml add this line:
 
     <project name="flappjaxxx/OTA" path="packages/apps/FJ-OTA" remote="github" revision="master" />
 
+Optional: In .repo/repo/default.xml You may need to add these lines if they aren't already there.
+
+  <remote  name="github"
+           fetch=".." />
+
+  <default revision="refs/heads/jellybean"
+           remote="github"
+           sync-c="true"
+           sync-j="4" />
+
 Add this line to your vendor/your rom-cm or whatever it is/config/common.mk:
 
     # FJ-OTA
