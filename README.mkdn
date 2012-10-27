@@ -12,14 +12,14 @@ In local_manifest.xml add this line:
 
     <project name="flappjaxxx/OTA" path="packages/apps/FJ-OTA" remote="github" revision="master" />
 
-Optional: 
+Optional but may be required:
 
-In .repo/repo/default.xml You may need to add these lines if they aren't already there.
+    In .repo/repo/default.xml You may need to add these lines if they aren't already there.
 
-  <remote  name="github"
+    <remote  name="github"
            fetch=".." />
 
-  <default revision="refs/heads/jellybean"
+    <default revision="refs/heads/jellybean"
            remote="github"
            sync-c="true"
            sync-j="4" />
