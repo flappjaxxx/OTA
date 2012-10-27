@@ -30,7 +30,8 @@ public class OTAActivity extends Activity {
 	    String RomInc= android.os.Build.VERSION.INCREMENTAL;
 
 	    // Your incremental date will start with the numerical date in ro.build.version.incremental
-	    // 13 and 21 will be the character range and will need to be changed to match your incremental length of characters
+	    // 13,21 here will be the character date range and needs to be changed to match yours
+	    // Example: Mine is eng.ctindall.20121026.175415 Date starts after character 13 and ends with 21
 	    String BuildDate= RomInc.substring(13, 21);	    
 
 	    mWebView = (WebView) findViewById(R.id.webview);
