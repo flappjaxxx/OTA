@@ -11,8 +11,6 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.fj.ota.R;
-
 public class OTAActivity extends Activity {
 	
 	WebView mWebView;
@@ -28,11 +26,35 @@ public class OTAActivity extends Activity {
 	    // This incremental info needs to be changed to coincide with ROM developer incremental info
 	    // This will be this line in your build.prop ro.build.version.incremental
 	    String RomInc= android.os.Build.VERSION.INCREMENTAL;
+	    String BuildDate = "29991231";
+	    
+	    int strPos = RomInc.indexOf("2012");
+	    if (strPos >= 0)
+	    {	
+	    	BuildDate=RomInc.substring(strPos, strPos+8); 
+	    }
+	    else  //2012 not found, try for 2013
+	    {
+	    	strPos = RomInc.indexOf("2013");
+	    	if (strPos >= 0)
+		    {	
+		    	BuildDate=RomInc.substring(strPos, strPos+8); 
+		    }
+	    	else // 2013 not found either, try 2014
+		    {
+		    	strPos = RomInc.indexOf("2014");
+		    	if (strPos >= 0)
+			    {	
+			    	BuildDate=RomInc.substring(strPos, strPos+8); 
+			    }
+		    }
+	    }
 
+	    // This is now deprecated.
 	    // Your incremental date will start with the numerical date in ro.build.version.incremental
 	    // 13,21 here will be the character date range and needs to be changed to match yours
 	    // Example: Mine is eng.ctindall.20121026.175415 Date starts after character 13 and ends with 21
-	    String BuildDate= RomInc.substring(13, 21);	    
+	    //String BuildDate= RomInc.substring(13, 21);	    
 
 	    mWebView = (WebView) findViewById(R.id.webview);
 	    mWebView.getSettings().setJavaScriptEnabled(true);
