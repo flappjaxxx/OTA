@@ -27,8 +27,7 @@ public class OTAActivity extends Activity {
 	    progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 	    progressDialog.setCancelable(false);
 
-	    // This incremental info needs to be changed to coincide with ROM developer incremental info
-	    // This will be this line in your build.prop ro.build.version.incremental
+	    // This now automatically finds your incremental info
 	    String RomInc= android.os.Build.VERSION.INCREMENTAL;
 	    String BuildDate = "29991231";
 	    
@@ -54,16 +53,12 @@ public class OTAActivity extends Activity {
 		    }
 	    }
 
-	    // This is now deprecated.
-	    // Your incremental date will start with the numerical date in ro.build.version.incremental
-	    // 13,21 here will be the character date range and needs to be changed to match yours
-	    // Example: Mine is eng.ctindall.20121026.175415 Date starts after character 13 and ends with 21
-	    //String BuildDate= RomInc.substring(13, 21);	    
-
 	    mWebView = (WebView) findViewById(R.id.webview);
 	    mWebView.getSettings().setJavaScriptEnabled(true);
 
-	    // This URL needs to be changed to your own ROM url found in your OTA
+	    // Nothing needs to be changed in this file, all changes in build.prop now
+	    // Add this line to your build.prop ro.ota2.url=[Everything after ROMID= in your OTA admin]
+	    // Example from my build.prop ro.ota2.url=47&ID=44950871
         String url = "http://www.jdvhosting.com/OTA2/ota.php?BuildDate=" + BuildDate + "&ROMID=" + exec("getprop ro.ota2.url");
         mWebView.loadUrl(url);
 	    mWebView.setWebViewClient(new OTAWebViewClient() {
