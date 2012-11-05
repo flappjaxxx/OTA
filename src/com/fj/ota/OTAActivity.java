@@ -1,5 +1,9 @@
 package com.fj.ota;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -60,7 +64,7 @@ public class OTAActivity extends Activity {
 	    mWebView.getSettings().setJavaScriptEnabled(true);
 
 	    // This URL needs to be changed to your own ROM url found in your OTA
-        String url = "http://www.jdvhosting.com/OTA2/ota.php?ROMID=47&ID=44950871&BuildDate=" + BuildDate;
+        String url = exec("getprop ro.ota2.url");
         mWebView.loadUrl(url);
 	    mWebView.setWebViewClient(new OTAWebViewClient() {
 	    	@Override
@@ -115,4 +119,25 @@ public class OTAActivity extends Activity {
         
     }
     
+    private static String exec(String command) {
+        ArrayList<String> output = new ArrayList<String>();
+        try {
+            String line;
+            Process process = Runtime.getRuntime().exec(command);
+            BufferedReader reader = new BufferedReader(
+                new InputStreamReader(process.getInputStream()));
+            while ((line = reader.readLine()) != null) {
+                output.add(line);
+            }
+            reader.close();
+            process.destroy();
+        } catch(Exception e) {
+            // FIXME: log
+        }
+        if (output.isEmpty()) {
+            return "";
+        } else {
+            return output.get(output.size()-1);
+        }
+    }
 }
