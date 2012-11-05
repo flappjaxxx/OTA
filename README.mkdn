@@ -30,4 +30,6 @@ To compile it seperately either compile it straight with eclipse or after lunchi
 
 Note:
 
-    Also do not forget to change your incremental syntax in OTAActivity.java
+    If you wish to hide from app drawer remove or comment out the following line in AndroidManifest.xml
+    <category android:name="android.intent.category.LAUNCHER" />
+
