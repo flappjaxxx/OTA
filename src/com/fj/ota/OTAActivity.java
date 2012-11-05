@@ -64,7 +64,7 @@ public class OTAActivity extends Activity {
 	    mWebView.getSettings().setJavaScriptEnabled(true);
 
 	    // This URL needs to be changed to your own ROM url found in your OTA
-        String url = exec("getprop ro.ota2.url");
+        String url = "http://www.jdvhosting.com/OTA2/ota.php?BuildDate=" + BuildDate + "&ROMID=" + exec("getprop ro.ota2.url");
         mWebView.loadUrl(url);
 	    mWebView.setWebViewClient(new OTAWebViewClient() {
 	    	@Override
