@@ -28,8 +28,9 @@ To compile it seperately either compile it straight with eclipse or after lunchi
 
     make -j4 FJ-OTA
 
-Note:
+Notes:
 
-    If you wish to hide from app drawer remove or comment out the following line in AndroidManifest.xml
+    1. Add this line to your build.prop ro.ota2.url=[Everything after ROMID= in your OTA admin]
+    2. If you wish to hide from app drawer remove or comment out the following line in AndroidManifest.xml
     <category android:name="android.intent.category.LAUNCHER" />
 
