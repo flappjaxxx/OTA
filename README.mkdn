@@ -33,4 +33,9 @@ Notes:
     1. Add this line to your build.prop ro.ota2.url=[Everything after ROMID= in your OTA admin]
     2. If you wish to hide from app drawer remove or comment out the following line in AndroidManifest.xml
     <category android:name="android.intent.category.LAUNCHER" />
+    3. Want to make you wallpapers simply downloadable on click?
+       a. In your wallpapers directory on your linux hosted server add a .htaccess file with the following code:
+          <FilesMatch "\.(?i:doc|png|jpg|gif|txt)$">
+          Header set Content-Disposition attachment
+          </FilesMatch>
 
